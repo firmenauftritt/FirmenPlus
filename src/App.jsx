@@ -1,52 +1,54 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function App() {
-  const [scroll, setScroll] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScroll(window.scrollY > 50)
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  const [open, setOpen] = useState(false)
 
   return (
     <div className="page">
 
       {/* NAV */}
-      <header className={scroll ? "nav nav-scroll" : "nav"}>
+      <header className="nav">
         <div className="logo">FirmenPlus</div>
 
-        <nav>
+        <nav className={open ? "menu open" : "menu"}>
           <a href="#services">Leistungen</a>
-          <a href="#cases">Cases</a>
           <a href="#about">Über uns</a>
-          <a href="#kontakt" className="nav-cta">Kontakt</a>
+          <a href="#process">Ablauf</a>
+          <a href="#contact">Kontakt</a>
         </nav>
+
+        <button className="burger" onClick={() => setOpen(!open)}>
+          ☰
+        </button>
       </header>
 
-      {/* HERO */}
+      {/* HERO (WICHTIG: jetzt groß & premium) */}
       <section className="hero">
-        <div className="badge">Premium Digital Studio</div>
+        <div className="hero-inner">
 
-        <h1>
-          Wir bauen digitale Systeme,<br />
-          die Umsatz erzeugen.
-        </h1>
+          <div className="badge">Webdesign · KI · Automatisierung</div>
 
-        <p>
-          Webdesign, KI-Automatisierung und Marketing-Systeme für Unternehmen,
-          die wachsen wollen – schnell, sauber und professionell.
-        </p>
+          <h1>
+            Ihr Unternehmen.<br />
+            <span>Professionell im Internet.</span>
+          </h1>
 
-        <div className="hero-buttons">
-          <a href="#kontakt" className="btn">Projekt starten</a>
-          <a href="#services" className="btn-outline">Leistungen</a>
-        </div>
+          <p>
+            Wir erstellen hochwertige Websites, automatisieren Prozesse
+            und bringen Ihr Unternehmen digital nach vorne.
+          </p>
 
-        <div className="trust">
-          <span>✓ Schnelle Umsetzung</span>
-          <span>✓ Premium Design</span>
-          <span>✓ KI Automatisierung</span>
+          <div className="hero-buttons">
+            <a className="btn" href="#contact">Kostenloses Gespräch</a>
+            <a className="btn ghost" href="#services">Leistungen ansehen</a>
+          </div>
+
+          <div className="trust">
+            <div>✓ Schnell umgesetzt</div>
+            <div>✓ Festpreis</div>
+            <div>✓ Premium Design</div>
+          </div>
+
         </div>
       </section>
 
@@ -57,65 +59,58 @@ export default function App() {
         <div className="grid">
           <div className="card">
             <h3>Webdesign</h3>
-            <p>High-End Websites mit Fokus auf Conversion & Vertrauen.</p>
+            <p>Moderne, schnelle und verkaufsstarke Websites.</p>
           </div>
 
           <div className="card">
             <h3>KI Automatisierung</h3>
-            <p>Automatisierte Prozesse, Chatbots und Workflows.</p>
+            <p>Chatbots, Prozesse und intelligente Systeme.</p>
           </div>
 
           <div className="card">
-            <h3>Digital Marketing</h3>
-            <p>Strategien für Reichweite, Leads und Wachstum.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* CASE STUDIES */}
-      <section id="cases" className="section dark">
-        <h2>Case Study</h2>
-
-        <div className="case">
-          <h3>Podologie Praxis – mehr Kunden durch neue Website</h3>
-          <p>
-            Modernes Redesign mit Fokus auf Vertrauen, Google Sichtbarkeit
-            und einfache Termin-Anfragen.
-          </p>
-
-          <div className="stats">
-            <div>+140% Anfragen</div>
-            <div>Top Google Ranking</div>
-            <div>Mobile Optimiert</div>
+            <h3>Online Marketing</h3>
+            <p>Mehr Sichtbarkeit, mehr Kunden, mehr Umsatz.</p>
           </div>
         </div>
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="section">
+      <section id="about" className="section dark">
         <h2>Über uns</h2>
-
-        <p className="text">
-          FirmenPlus ist ein Digital Studio für moderne Unternehmen.
-          Wir verbinden Design, Technologie und Automatisierung.
+        <p>
+          Wir helfen kleinen und mittelständischen Unternehmen,
+          digital sichtbar und erfolgreich zu werden – ohne Chaos,
+          ohne Technikstress.
         </p>
       </section>
 
+      {/* PROCESS */}
+      <section id="process" className="section">
+        <h2>Ablauf</h2>
+
+        <div className="steps">
+          <div>1. Gespräch</div>
+          <div>2. Angebot</div>
+          <div>3. Umsetzung</div>
+          <div>4. Online gehen</div>
+        </div>
+      </section>
+
       {/* CONTACT */}
-      <section id="kontakt" className="section">
+      <section id="contact" className="section">
         <h2>Kontakt</h2>
 
         <form className="form">
           <input placeholder="Name" />
           <input placeholder="E-Mail" />
-          <textarea placeholder="Projekt beschreiben..." />
-          <button>Projekt anfragen</button>
+          <textarea placeholder="Worum geht es?" rows="5"></textarea>
+          <button className="btn">Anfrage senden</button>
         </form>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
-        © 2026 FirmenPlus – Digital Studio
+        © {new Date().getFullYear()} FirmenPlus · Alle Rechte vorbehalten
       </footer>
 
     </div>
