@@ -1,15 +1,20 @@
-import { createRouter } from '@tanstack/react-router'
+import { Outlet, createRootRoute, Link } from '@tanstack/react-router'
 
-// Import the generated route tree
-import { routeTree } from './routeTree.gen'
+export const Route = createRootRoute({
+  component: RootLayout,
+})
 
-// Create a new router instance
-export const getRouter = () => {
-  const router = createRouter({
-    routeTree,
-    scrollRestoration: true,
-    defaultPreloadStaleTime: 0,
-  })
+function RootLayout() {
+  return (
+    <>
+      <nav>
+        <Link to="/">Start</Link>
+        <Link to="/leistungen">Leistungen</Link>
+        <Link to="/ueber-uns">Über uns</Link>
+        <Link to="/kontakt">Kontakt</Link>
+      </nav>
 
-  return router
+      <Outlet />
+    </>
+  )
 }
