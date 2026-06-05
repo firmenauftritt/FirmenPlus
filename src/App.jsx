@@ -1,52 +1,84 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function App() {
-  const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileMenu, setMobileMenu] = useState(false)
+  const [openFaq, setOpenFaq] = useState(null)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  const services = [
+    {
+      title: "Webdesign",
+      text: "Moderne, schnelle und verkaufsstarke Websites für Unternehmen.",
+    },
+    {
+      title: "KI Automatisierung",
+      text: "Automatisierung von Prozessen, Chatbots und digitale Systeme.",
+    },
+    {
+      title: "Online Marketing",
+      text: "Mehr Reichweite, mehr Kunden, mehr Umsatz.",
+    },
+  ]
+
+  const faqs = [
+    {
+      q: "Wie schnell ist meine Website fertig?",
+      a: "In der Regel innerhalb weniger Tage bis 2 Wochen je nach Umfang.",
+    },
+    {
+      q: "Was kostet eine Website?",
+      a: "Das hängt vom Projekt ab. Nach einem Gespräch bekommst du einen festen Preis.",
+    },
+    {
+      q: "Kann ich später selbst Änderungen machen?",
+      a: "Ja, oder wir übernehmen die Betreuung komplett für dich.",
+    },
+  ]
 
   return (
     <div className="page">
 
       {/* NAV */}
-      <header className="nav">
+      <header className={scrolled ? "nav scrolled" : "nav"}>
         <div className="logo">FirmenPlus</div>
 
-        <nav className={open ? "menu open" : "menu"}>
+        <nav className={mobileMenu ? "menu open" : "menu"}>
           <a href="#services">Leistungen</a>
           <a href="#about">Über uns</a>
-          <a href="#process">Ablauf</a>
+          <a href="#faq">FAQ</a>
           <a href="#contact">Kontakt</a>
         </nav>
 
-        <button className="burger" onClick={() => setOpen(!open)}>
+        <button className="burger" onClick={() => setMobileMenu(!mobileMenu)}>
           ☰
         </button>
       </header>
 
-      {/* HERO (WICHTIG: jetzt groß & premium) */}
+      {/* HERO */}
       <section className="hero">
-        <div className="hero-inner">
+        <div className="hero-content">
 
-          <div className="badge">Webdesign · KI · Automatisierung</div>
+          <p className="tag">Webdesign · KI · Automatisierung</p>
 
           <h1>
             Ihr Unternehmen.<br />
             <span>Professionell im Internet.</span>
           </h1>
 
-          <p>
-            Wir erstellen hochwertige Websites, automatisieren Prozesse
-            und bringen Ihr Unternehmen digital nach vorne.
+          <p className="sub">
+            Wir erstellen moderne Websites und digitale Systeme,
+            die Kunden bringen und Prozesse automatisieren.
           </p>
 
-          <div className="hero-buttons">
+          <div className="buttons">
             <a className="btn" href="#contact">Kostenloses Gespräch</a>
-            <a className="btn ghost" href="#services">Leistungen ansehen</a>
-          </div>
-
-          <div className="trust">
-            <div>✓ Schnell umgesetzt</div>
-            <div>✓ Festpreis</div>
-            <div>✓ Premium Design</div>
+            <a className="btn ghost" href="#services">Leistungen</a>
           </div>
 
         </div>
@@ -57,20 +89,12 @@ export default function App() {
         <h2>Leistungen</h2>
 
         <div className="grid">
-          <div className="card">
-            <h3>Webdesign</h3>
-            <p>Moderne, schnelle und verkaufsstarke Websites.</p>
-          </div>
-
-          <div className="card">
-            <h3>KI Automatisierung</h3>
-            <p>Chatbots, Prozesse und intelligente Systeme.</p>
-          </div>
-
-          <div className="card">
-            <h3>Online Marketing</h3>
-            <p>Mehr Sichtbarkeit, mehr Kunden, mehr Umsatz.</p>
-          </div>
+          {services.map((s, i) => (
+            <div className="card" key={i}>
+              <h3>{s.title}</h3>
+              <p>{s.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -78,21 +102,25 @@ export default function App() {
       <section id="about" className="section dark">
         <h2>Über uns</h2>
         <p>
-          Wir helfen kleinen und mittelständischen Unternehmen,
-          digital sichtbar und erfolgreich zu werden – ohne Chaos,
-          ohne Technikstress.
+          Wir helfen Unternehmen digital sichtbar zu werden und mehr Kunden zu gewinnen
+          durch moderne Websites und Automatisierung.
         </p>
       </section>
 
-      {/* PROCESS */}
-      <section id="process" className="section">
-        <h2>Ablauf</h2>
+      {/* FAQ */}
+      <section id="faq" className="section">
+        <h2>FAQ</h2>
 
-        <div className="steps">
-          <div>1. Gespräch</div>
-          <div>2. Angebot</div>
-          <div>3. Umsetzung</div>
-          <div>4. Online gehen</div>
+        <div className="faq">
+          {faqs.map((f, i) => (
+            <div key={i} className="faq-item">
+              <button onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+                {f.q}
+              </button>
+
+              {openFaq === i && <p>{f.a}</p>}
+            </div>
+          ))}
         </div>
       </section>
 
@@ -103,14 +131,14 @@ export default function App() {
         <form className="form">
           <input placeholder="Name" />
           <input placeholder="E-Mail" />
-          <textarea placeholder="Worum geht es?" rows="5"></textarea>
-          <button className="btn">Anfrage senden</button>
+          <textarea placeholder="Nachricht" rows="5"></textarea>
+          <button className="btn">Senden</button>
         </form>
       </section>
 
       {/* FOOTER */}
       <footer className="footer">
-        © {new Date().getFullYear()} FirmenPlus · Alle Rechte vorbehalten
+        © {new Date().getFullYear()} FirmenPlus
       </footer>
 
     </div>
