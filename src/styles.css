@@ -1,5 +1,140 @@
 body {
   margin: 0;
-  background: #0a0c10;
+  font-family: Arial, sans-serif;
+  background: #0b0f17;
   color: white;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: #0f1624;
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: gold;
+}
+
+.navlinks a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu {
+  display: none;
+  background: none;
+  color: white;
+  font-size: 24px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+}
+
+.hero p {
+  color: #aaa;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  background: gold;
+  color: black;
+  text-decoration: none;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.dark {
+  background: #0f1624;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: #121a2a;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* FORM */
+.form {
+  max-width: 400px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input,
+.form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.form button {
+  background: gold;
+  border: none;
+  padding: 10px;
+  font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #0f1624;
+  color: #888;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .navlinks {
+    display: none;
+  }
+
+  .navlinks.open {
+    display: block;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #0f1624;
+    padding: 10px;
+  }
 }
