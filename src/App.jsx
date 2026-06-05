@@ -2,144 +2,187 @@ import { useState, useEffect } from "react"
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileMenu, setMobileMenu] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
 
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+
+  const [formStatus, setFormStatus] = useState("idle")
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 60)
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const services = [
+  const handleNavClick = (e) => {
+    const href = e.currentTarget.getAttribute("href")
+    if (href?.startsWith("#")) {
+      e.preventDefault()
+      const el = document.querySelector(href)
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 80
+        window.scrollTo({ top, behavior: "smooth" })
+      }
+      setMobileMenuOpen(false)
+    }
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setFormStatus("sending")
+
+    await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(formData),
+    })
+
+    setFormStatus("success")
+  }
+
+  const navLinks = [
+    { href: "#leistungen", label: "Leistungen" },
+    { href: "#ueber-uns", label: "Über uns" },
+    { href: "#referenzen", label: "Referenzen" },
+    { href: "#kontakt", label: "Kontakt" },
+  ]
+
+  const SERVICES = [
+    { title: "Webdesign", subtitle: "Premium Websites", description: "Moderne Websites für Unternehmen.", bullets: ["SEO", "Schnell", "Mobil"] },
+    { title: "KI Lösungen", subtitle: "Automation", description: "KI für dein Business.", bullets: ["Chatbots", "Automationen", "24/7"] },
+    { title: "Marketing", subtitle: "Wachstum", description: "Mehr Kunden online.", bullets: ["Ads", "Social Media", "Branding"] },
+  ]
+
+  const TESTIMONIALS = [
     {
-      title: "Webdesign",
-      text: "Moderne, schnelle und verkaufsstarke Websites für Unternehmen.",
-    },
-    {
-      title: "KI Automatisierung",
-      text: "Automatisierung von Prozessen, Chatbots und digitale Systeme.",
-    },
-    {
-      title: "Online Marketing",
-      text: "Mehr Reichweite, mehr Kunden, mehr Umsatz.",
+      text: "Endlich eine Website, die Kunden bringt.",
+      name: "Nicole Huszak",
+      company: "Podologie Huszak",
+      since: "Kunde seit 2023",
     },
   ]
 
-  const faqs = [
-    {
-      q: "Wie schnell ist meine Website fertig?",
-      a: "In der Regel innerhalb weniger Tage bis 2 Wochen je nach Umfang.",
-    },
-    {
-      q: "Was kostet eine Website?",
-      a: "Das hängt vom Projekt ab. Nach einem Gespräch bekommst du einen festen Preis.",
-    },
-    {
-      q: "Kann ich später selbst Änderungen machen?",
-      a: "Ja, oder wir übernehmen die Betreuung komplett für dich.",
-    },
+  const FAQS = [
+    { q: "Was kostet eine Website?", a: "Individuell je nach Projekt." },
+    { q: "Wie lange dauert es?", a: "Meist 1–2 Wochen." },
+    { q: "Kann ich Inhalte ändern?", a: "Ja, jederzeit möglich." },
+  ]
+
+  const stats = [
+    { value: "40+", label: "Projekte" },
+    { value: "100%", label: "Zufriedenheit" },
+    { value: "7 Tage", label: "Ø Umsetzung" },
   ]
 
   return (
-    <div className="page">
+    <div style={{ background: "var(--bg-primary)" }}>
 
       {/* NAV */}
-      <header className={scrolled ? "nav scrolled" : "nav"}>
-        <div className="logo">FirmenPlus</div>
+      <nav className={`nav-container ${scrolled ? "nav-scrolled" : ""}`}>
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 2rem", height: "72px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <a href="#" style={{ textDecoration: "none" }}>
+            <strong>FirmenPlus</strong>
+          </a>
 
-        <nav className={mobileMenu ? "menu open" : "menu"}>
-          <a href="#services">Leistungen</a>
-          <a href="#about">Über uns</a>
-          <a href="#faq">FAQ</a>
-          <a href="#contact">Kontakt</a>
-        </nav>
-
-        <button className="burger" onClick={() => setMobileMenu(!mobileMenu)}>
-          ☰
-        </button>
-      </header>
-
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-content">
-
-          <p className="tag">Webdesign · KI · Automatisierung</p>
-
-          <h1>
-            Ihr Unternehmen.<br />
-            <span>Professionell im Internet.</span>
-          </h1>
-
-          <p className="sub">
-            Wir erstellen moderne Websites und digitale Systeme,
-            die Kunden bringen und Prozesse automatisieren.
-          </p>
-
-          <div className="buttons">
-            <a className="btn" href="#contact">Kostenloses Gespräch</a>
-            <a className="btn ghost" href="#services">Leistungen</a>
+          <div className="hidden md:flex" style={{ gap: "2rem" }}>
+            {navLinks.map((l) => (
+              <a key={l.href} href={l.href} onClick={handleNavClick}>
+                {l.label}
+              </a>
+            ))}
           </div>
 
+          <button className="md:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+            ☰
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO (DEIN STYLE BEHALTEN) */}
+      <section className="hero-section">
+        <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "120px 2rem" }}>
+          <h1 style={{ fontSize: "clamp(3rem, 6vw, 5rem)" }}>
+            Ihr Betrieb.<br />
+            <span style={{ color: "gold" }}>Professionell im Internet.</span>
+          </h1>
+
+          <p style={{ maxWidth: "600px", color: "#aaa" }}>
+            Websites, KI und Automatisierung für Unternehmen.
+          </p>
+
+          <a className="btn-primary" href="#kontakt">
+            Kostenloses Gespräch
+          </a>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", padding: "40px" }}>
+          {stats.map((s) => (
+            <div key={s.label}>
+              <strong>{s.value}</strong>
+              <div>{s.label}</div>
+            </div>
+          ))}
         </div>
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="section">
-        <h2>Leistungen</h2>
-
-        <div className="grid">
-          {services.map((s, i) => (
-            <div className="card" key={i}>
-              <h3>{s.title}</h3>
-              <p>{s.text}</p>
-            </div>
-          ))}
-        </div>
+      <section id="leistungen">
+        {SERVICES.map((s) => (
+          <div key={s.title}>
+            <h3>{s.title}</h3>
+            <p>{s.description}</p>
+          </div>
+        ))}
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="section dark">
+      <section id="ueber-uns">
         <h2>Über uns</h2>
-        <p>
-          Wir helfen Unternehmen digital sichtbar zu werden und mehr Kunden zu gewinnen
-          durch moderne Websites und Automatisierung.
-        </p>
+        <p>Wir bauen moderne digitale Lösungen für Unternehmen.</p>
+      </section>
+
+      {/* TESTIMONIAL */}
+      <section id="referenzen">
+        {TESTIMONIALS.map((t) => (
+          <div key={t.name}>
+            <p>"{t.text}"</p>
+            <strong>{t.name}</strong>
+          </div>
+        ))}
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="section">
-        <h2>FAQ</h2>
-
-        <div className="faq">
-          {faqs.map((f, i) => (
-            <div key={i} className="faq-item">
-              <button onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                {f.q}
-              </button>
-
-              {openFaq === i && <p>{f.a}</p>}
-            </div>
-          ))}
-        </div>
+      <section>
+        {FAQS.map((f, i) => (
+          <div key={i}>
+            <button onClick={() => setOpenFaq(openFaq === i ? null : i)}>
+              {f.q}
+            </button>
+            {openFaq === i && <p>{f.a}</p>}
+          </div>
+        ))}
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="section">
-        <h2>Kontakt</h2>
-
-        <form className="form">
-          <input placeholder="Name" />
-          <input placeholder="E-Mail" />
-          <textarea placeholder="Nachricht" rows="5"></textarea>
-          <button className="btn">Senden</button>
+      <section id="kontakt">
+        <form onSubmit={handleFormSubmit}>
+          <input placeholder="Name" onChange={(e) => setFormData({ ...formData, name: e.target.value })} />
+          <input placeholder="Email" onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
+          <textarea placeholder="Nachricht" onChange={(e) => setFormData({ ...formData, message: e.target.value })} />
+          <button type="submit">
+            {formStatus === "sending" ? "Senden..." : "Senden"}
+          </button>
         </form>
       </section>
-
-      {/* FOOTER */}
-      <footer className="footer">
-        © {new Date().getFullYear()} FirmenPlus
-      </footer>
 
     </div>
   )
