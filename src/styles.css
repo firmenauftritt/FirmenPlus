@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0b0f17;
+  font-family: "Inter", sans-serif;
+  background: #0a0f1a;
   color: white;
 }
 
@@ -9,22 +9,29 @@ body {
 .nav {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  background: #0f1624;
+  padding: 20px 40px;
+  background: rgba(10, 15, 26, 0.8);
+  backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 20px;
-  color: gold;
+  font-weight: 700;
+  color: #c9a84c;
+  letter-spacing: 0.5px;
 }
 
 .navlinks a {
   margin-left: 20px;
-  color: white;
+  color: #ccc;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+.navlinks a:hover {
+  color: white;
 }
 
 .menu {
@@ -32,16 +39,29 @@ body {
   background: none;
   color: white;
   font-size: 24px;
+  border: none;
 }
 
 /* HERO */
 .hero {
   text-align: center;
-  padding: 100px 20px;
+  padding: 120px 20px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border: 1px solid #c9a84c;
+  color: #c9a84c;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: 40px;
+  font-size: 52px;
+  margin: 0;
+  line-height: 1.1;
 }
 
 .hero p {
@@ -50,26 +70,45 @@ body {
   margin: 20px auto;
 }
 
+.hero-buttons {
+  margin-top: 30px;
+}
+
 .btn {
   display: inline-block;
   padding: 12px 20px;
-  background: gold;
+  background: #c9a84c;
   color: black;
+  font-weight: 600;
   text-decoration: none;
-  margin-top: 20px;
-  font-weight: bold;
+  border-radius: 6px;
+  margin-right: 10px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid #333;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
 }
 
 /* SECTIONS */
 .section {
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
 }
 
 .dark {
-  background: #0f1624;
+  background: #0f172a;
 }
 
+.section h2 {
+  font-size: 36px;
+}
+
+/* GRID */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -79,14 +118,29 @@ body {
 }
 
 .card {
-  background: #121a2a;
-  padding: 20px;
-  border-radius: 10px;
+  background: #111827;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* STEPS */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.steps div {
+  padding: 12px 20px;
+  border: 1px solid #333;
+  border-radius: 8px;
 }
 
 /* FORM */
 .form {
-  max-width: 400px;
+  max-width: 500px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -95,24 +149,28 @@ body {
 .form input,
 .form textarea {
   margin: 10px 0;
-  padding: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  background: #111827;
+  color: white;
 }
 
 .form button {
-  background: gold;
+  background: #c9a84c;
   border: none;
-  padding: 10px;
+  padding: 12px;
   font-weight: bold;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
 /* FOOTER */
 .footer {
   text-align: center;
-  padding: 20px;
-  background: #0f1624;
-  color: #888;
+  padding: 30px;
+  color: #777;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 /* MOBILE */
@@ -121,20 +179,25 @@ body {
     grid-template-columns: 1fr;
   }
 
+  .hero h1 {
+    font-size: 34px;
+  }
+
   .menu {
     display: block;
   }
 
   .navlinks {
     display: none;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: #0f172a;
+    padding: 10px;
+    border-radius: 10px;
   }
 
   .navlinks.open {
     display: block;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    background: #0f1624;
-    padding: 10px;
   }
 }
