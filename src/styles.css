@@ -1,73 +1,72 @@
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
-  background: #0a0f1a;
+  background: #070a12;
   color: white;
 }
 
 /* NAV */
 .nav {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  background: rgba(10, 15, 26, 0.8);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
+  padding: 18px 40px;
+  backdrop-filter: blur(12px);
+  background: rgba(7,10,18,0.6);
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  z-index: 100;
+}
+
+.nav-scroll {
+  background: rgba(7,10,18,0.9);
 }
 
 .logo {
   font-weight: 700;
   color: #c9a84c;
-  letter-spacing: 0.5px;
 }
 
-.navlinks a {
+nav a {
   margin-left: 20px;
-  color: #ccc;
+  color: #aaa;
   text-decoration: none;
   transition: 0.3s;
 }
 
-.navlinks a:hover {
+nav a:hover {
   color: white;
 }
 
-.menu {
-  display: none;
-  background: none;
-  color: white;
-  font-size: 24px;
-  border: none;
+.nav-cta {
+  color: #c9a84c;
 }
 
 /* HERO */
 .hero {
+  padding: 180px 20px 100px;
   text-align: center;
-  padding: 120px 20px;
 }
 
 .badge {
   display: inline-block;
-  padding: 6px 12px;
   border: 1px solid #c9a84c;
   color: #c9a84c;
-  border-radius: 20px;
+  padding: 6px 14px;
+  border-radius: 50px;
   font-size: 12px;
-  margin-bottom: 20px;
 }
 
 .hero h1 {
-  font-size: 52px;
-  margin: 0;
+  font-size: 60px;
+  margin: 20px 0;
   line-height: 1.1;
 }
 
 .hero p {
-  color: #aaa;
   max-width: 600px;
-  margin: 20px auto;
+  margin: auto;
+  color: #aaa;
 }
 
 .hero-buttons {
@@ -75,37 +74,45 @@ body {
 }
 
 .btn {
-  display: inline-block;
-  padding: 12px 20px;
   background: #c9a84c;
   color: black;
-  font-weight: 600;
+  padding: 12px 22px;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
   margin-right: 10px;
+  font-weight: 600;
 }
 
-.btn-secondary {
-  display: inline-block;
-  padding: 12px 20px;
+.btn-outline {
   border: 1px solid #333;
+  padding: 12px 22px;
+  border-radius: 8px;
   color: white;
   text-decoration: none;
-  border-radius: 6px;
+}
+
+/* TRUST */
+.trust {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: #777;
+  font-size: 14px;
 }
 
 /* SECTIONS */
 .section {
-  padding: 100px 20px;
+  padding: 120px 20px;
   text-align: center;
 }
 
 .dark {
-  background: #0f172a;
+  background: #0b1020;
 }
 
 .section h2 {
-  font-size: 36px;
+  font-size: 40px;
 }
 
 /* GRID */
@@ -115,27 +122,36 @@ body {
   gap: 20px;
   max-width: 1000px;
   margin: auto;
+  margin-top: 40px;
 }
 
 .card {
-  background: #111827;
-  padding: 25px;
+  background: #11182a;
+  padding: 30px;
   border-radius: 12px;
   border: 1px solid rgba(255,255,255,0.05);
+  transition: 0.3s;
 }
 
-/* STEPS */
-.steps {
+.card:hover {
+  transform: translateY(-5px);
+  border-color: #c9a84c;
+}
+
+/* CASE */
+.case {
+  max-width: 800px;
+  margin: auto;
+  padding: 40px;
+  background: #11182a;
+  border-radius: 14px;
+}
+
+.stats {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.steps div {
-  padding: 12px 20px;
-  border: 1px solid #333;
-  border-radius: 8px;
+  justify-content: space-around;
+  margin-top: 20px;
+  color: #c9a84c;
 }
 
 /* FORM */
@@ -149,55 +165,38 @@ body {
 .form input,
 .form textarea {
   margin: 10px 0;
-  padding: 12px;
+  padding: 14px;
   border: none;
-  border-radius: 6px;
-  background: #111827;
+  border-radius: 8px;
+  background: #11182a;
   color: white;
 }
 
 .form button {
   background: #c9a84c;
+  padding: 14px;
   border: none;
-  padding: 12px;
   font-weight: bold;
-  cursor: pointer;
-  border-radius: 6px;
+  border-radius: 8px;
 }
 
 /* FOOTER */
 .footer {
   text-align: center;
   padding: 30px;
-  color: #777;
+  color: #666;
   border-top: 1px solid rgba(255,255,255,0.05);
 }
 
 /* MOBILE */
 @media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+
   .grid {
     grid-template-columns: 1fr;
   }
 
-  .hero h1 {
-    font-size: 34px;
-  }
-
-  .menu {
-    display: block;
-  }
-
-  .navlinks {
+  nav {
     display: none;
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    background: #0f172a;
-    padding: 10px;
-    border-radius: 10px;
-  }
-
-  .navlinks.open {
-    display: block;
   }
 }
