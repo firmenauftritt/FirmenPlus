@@ -1,20 +1,530 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>FirmenPlus – Webdesign, KI & Automatisierung</title>
-    <meta name="description" content="Premium Webdesign, KI-Automatisierung und digitale Lösungen für moderne Unternehmen." />
-
-    <!-- Fonts -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FirmenPlus - Professionelle Websites, Online Marketing, KI-Automatisierung und digitale Lösungen für Ihr Unternehmen.">
+    <meta name="keywords" content="Webdesign, Online Marketing, KI-Automatisierung, Digitalisierung, IT-Services">
+    <title>FirmenPlus - Digitale Lösungen für Ihr Wachstum</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <span class="logo-icon">◆</span>
+                    <span class="logo-text">FirmenPlus</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#services" class="nav-link">Leistungen</a>
+                    <a href="#process" class="nav-link">Prozess</a>
+                    <a href="#about" class="nav-link">Über uns</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#contact" class="nav-link">Kontakt</a>
+                </div>
+                <button class="nav-cta">Beratung anfragen</button>
+            </div>
+        </div>
+    </nav>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-headline">
+                    Mehr Kunden.<br>
+                    Mehr Effizienz.<br>
+                    Mehr Wachstum.
+                </h1>
+                <p class="hero-subheadline">
+                    FirmenPlus unterstützt Unternehmen mit professionellen Websites, gezielter Werbung, KI-Automatisierung und digitalen Lösungen.
+                </p>
+                <div class="hero-ctas">
+                    <button class="btn btn-primary" data-modal="contact-modal">Kostenloses Erstgespräch</button>
+                    <button class="btn btn-secondary" data-scroll="services">Leistungen entdecken</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Unsere Leistungen</h2>
+                <p>Umfassende digitale Lösungen für Ihr Unternehmenswachstum</p>
+            </div>
+            <div class="services-grid">
+                <!-- Webdesign -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="2" y="3" width="20" height="14" rx="2"></rect>
+                            <path d="M2 17h20"></path>
+                            <path d="M6 20h12"></path>
+                        </svg>
+                    </div>
+                    <h3>Webdesign</h3>
+                    <ul class="service-features">
+                        <li>Moderne Business-Websites</li>
+                        <li>Responsive Design</li>
+                        <li>Landing Pages</li>
+                        <li>Website-Optimierung</li>
+                        <li>Konversions-fokussiert</li>
+                    </ul>
+                </div>
+
+                <!-- Online Marketing -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            <circle cx="9" cy="10" r="1"></circle>
+                            <path d="M12 10h.01"></path>
+                            <path d="M15 10h.01"></path>
+                        </svg>
+                    </div>
+                    <h3>Online Marketing & Werbung</h3>
+                    <ul class="service-features">
+                        <li>Google Ads</li>
+                        <li>Social Media Advertising</li>
+                        <li>Lead Generation</li>
+                        <li>Lokales Marketing</li>
+                        <li>Kundenakquisitions-Kampagnen</li>
+                    </ul>
+                </div>
+
+                <!-- KI-Automatisierung -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="12" cy="12" r="1"></circle>
+                            <path d="M12 1v6m0 6v4"></path>
+                            <path d="M4.22 4.22l4.24 4.24m5.08 5.08l4.24 4.24"></path>
+                            <path d="M1 12h6m6 0h4"></path>
+                            <path d="M4.22 19.78l4.24-4.24m5.08-5.08l4.24-4.24"></path>
+                        </svg>
+                    </div>
+                    <h3>KI-Automatisierung</h3>
+                    <ul class="service-features">
+                        <li>Workflow-Automatisierung</li>
+                        <li>KI-Assistenten</li>
+                        <li>Kundenservice-Automation</li>
+                        <li>Prozessoptimierung</li>
+                        <li>Zeitsparende Lösungen</li>
+                    </ul>
+                </div>
+
+                <!-- Digitalisierung -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="12 3 20 7.5 20 16.5 12 21 4 16.5 4 7.5 12 3"></polyline>
+                            <polyline points="12 12 20 7.5"></polyline>
+                            <polyline points="12 21 12 12"></polyline>
+                            <polyline points="4 7.5 12 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Digitalisierung</h3>
+                    <ul class="service-features">
+                        <li>Digitale Geschäftsprozesse</li>
+                        <li>Prozessoptimierung</li>
+                        <li>Moderne Software-Lösungen</li>
+                        <li>Digitale Transformation</li>
+                        <li>Transformationsberatung</li>
+                    </ul>
+                </div>
+
+                <!-- IT-Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                        </svg>
+                    </div>
+                    <h3>IT-Dienstleistungen</h3>
+                    <ul class="service-features">
+                        <li>Technischer Support</li>
+                        <li>Website-Wartung</li>
+                        <li>Business-IT-Lösungen</li>
+                        <li>Digitale Infrastruktur</li>
+                        <li>Systemverwaltung</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose FirmenPlus Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-wrapper">
+                <div class="benefits-content">
+                    <h2>Warum FirmenPlus?</h2>
+                    <p class="benefits-intro">
+                        Wir sind mehr als nur ein Dienstleister. Wir sind Ihr Partner für nachhaltiges Wachstum und digitale Exzellenz.
+                    </p>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Individuelle Lösungen</h4>
+                                <p>Maßgeschneidert für Ihre spezifischen Anforderungen und Ziele</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Moderne Technologien</h4>
+                                <p>Zukunftssichere Lösungen mit den neuesten Technologien</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Schnelle Umsetzung</h4>
+                                <p>Effiziente Projektabwicklung ohne lange Wartezeiten</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Persönliche Betreuung</h4>
+                                <p>Ein dediziertes Team kümmert sich um Ihr Projekt</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Fokus auf Ergebnisse</h4>
+                                <p>Messbare Erfolge und konkrete ROI-Verbesserungen</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">✓</div>
+                            <div class="benefit-text">
+                                <h4>Zukunftssichere Strategien</h4>
+                                <p>Langfristige Lösungen, die mit Ihrem Unternehmen wachsen</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-visual">
+                    <div class="visual-placeholder">
+                        <div class="gradient-blob blob-1"></div>
+                        <div class="gradient-blob blob-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Growth Process Section -->
+    <section class="process-section" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Unser Prozess für Ihr Wachstum</h2>
+                <p>4 bewährte Schritte zu nachhaltigem digitalen Erfolg</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Analyse</h3>
+                    <p>Wir analysieren Ihre aktuelle Situation, Ziele und Marktchancen gründlich. Nur mit vollständigem Verständnis können wir die beste Strategie entwickeln.</p>
+                    <div class="step-icon">📊</div>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Strategie</h3>
+                    <p>Basierend auf unserer Analyse erstellen wir eine maßgeschneiderte Strategie, die Ihre Ziele in konkrete, erreichbare Meilensteine umwandelt.</p>
+                    <div class="step-icon">🎯</div>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Umsetzung</h3>
+                    <p>Unser erfahrenes Team setzt die Strategie mit höchster Qualität um. Transparente Kommunikation während des gesamten Prozesses ist garantiert.</p>
+                    <div class="step-icon">⚙️</div>
+                </div>
+                <div class="process-connector"></div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Wachstum</h3>
+                    <p>Nach dem Launch überwachen und optimieren wir kontinuierlich. Ihr Erfolg ist unser Erfolg – wir sind ein Partner auf lange Sicht.</p>
+                    <div class="step-icon">📈</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-wrapper">
+                <div class="about-content">
+                    <h2>Über FirmenPlus</h2>
+                    <p>
+                        FirmenPlus ist Ihr moderner digitaler Partner für echtes Wachstum. In einer Welt, die sich immer schneller verändert, verstehen wir die Herausforderungen, denen kleine und mittelständische Unternehmen gegenüberstehen.
+                    </p>
+                    <p>
+                        Unsere Mission: Wir helfen Ihrem Unternehmen, sichtbarer zu werden, effizienter zu arbeiten und wettbewerbsfähiger zu sein – durch intelligente digitale Lösungen und persönliche Betreuung.
+                    </p>
+                    <p>
+                        Ob es um eine neue Website geht, die Kundengewinnung durch digitale Marketing oder die Automatisierung Ihrer Geschäftsprozesse – wir haben die Expertise und das Engagement, um Ihre digitale Transformation zu gestalten.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <div class="highlight-number">100%</div>
+                            <div class="highlight-label">Fokus auf Ihr Wachstum</div>
+                        </div>
+                        <div class="highlight">
+                            <div class="highlight-number">5</div>
+                            <div class="highlight-label">Kernkompetenzen</div>
+                        </div>
+                        <div class="highlight">
+                            <div class="highlight-number">∞</div>
+                            <div class="highlight-label">Skalierbare Lösungen</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-visual">
+                    <div class="about-image-placeholder">
+                        <svg viewBox="0 0 400 400" fill="none">
+                            <defs>
+                                <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="200" cy="200" r="180" fill="url(#grad)"/>
+                            <text x="200" y="210" text-anchor="middle" font-size="48" fill="#fff" font-weight="bold">Digital</text>
+                            <text x="200" y="260" text-anchor="middle" font-size="48" fill="#93c5fd">Partner</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Häufig gestellte Fragen</h2>
+                <p>Antworten auf Ihre wichtigsten Fragen</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Was kostet eine professionelle Website?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Die Kosten für eine Website variieren je nach Umfang und Komplexität. Eine professionelle Business-Website beginnt ab einem bestimmten Budget und wird individuell kalkuliert. Während Ihres Erstgesprächs erhalten Sie eine klare Kostenübersicht basierend auf Ihren spezifischen Anforderungen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Wie funktioniert KI-Automatisierung für mein Unternehmen?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>KI-Automatisierung kann viele Prozesse vereinfachen: von automatisierter Kundenservice-Kommunikation über Workflow-Optimierung bis zur intelligenten Datenverwaltung. Wir analysieren Ihre Prozesse und identifizieren Bereiche, wo KI messbare Zeitersparnisse und Kostenreduktionen bringt.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Wie funktioniert Online-Werbung?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Online-Werbung umfasst Strategien wie Google Ads und Social Media Marketing. Wir erstellen Kampagnen, die Ihre Zielgruppe gezielt erreichen und messbare Ergebnisse liefern. Jede Kampagne wird kontinuierlich optimiert, um das beste Kosten-Nutzen-Verhältnis zu erzielen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Was bedeutet Digitalisierung für mein Unternehmen?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Digitalisierung bedeutet, Ihre Geschäftsprozesse in die digitale Welt zu bringen – effizienter, transparenter und skalierbarer. Das kann von digitalen Dokumentenverwaltungssystemen bis zu vollständiger Prozessautomation reichen, je nach Ihren Bedürfnissen.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Wie läuft das erste Beratungsgespräch ab?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Unser kostenloses Erstgespräch ist unverbindlich und völlig flexibel. Wir hören Ihnen zu, verstehen Ihre Ziele und Herausforderungen, und zeigen dann, wie FirmenPlus Ihnen helfen kann. Sie erhalten konkrete Empfehlungen und einen klaren Überblick über mögliche nächste Schritte.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Was ist nach der Implementierung Ihre Rolle?</span>
+                        <span class="faq-toggle">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Wir sehen uns als langfristiger Partner. Nach der Implementierung unterstützen wir Sie durch kontinuierliche Optimierung, technische Wartung, Performance-Monitoring und strategische Beratung. Ihr Erfolg ist unser Erfolg.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Bereit für den nächsten Schritt?</h2>
+                <p>Lassen Sie uns gemeinsam Ihr Unternehmen in die digitale Zukunft führen.</p>
+                <button class="btn btn-primary btn-large" data-modal="contact-modal">Kostenlose Beratung anfragen</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kontaktieren Sie uns</h2>
+                <p>Wir freuen uns auf das Gespräch mit Ihnen</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-form-wrapper">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="Ihr Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Ihre Telefonnummer">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Unternehmensname">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Welche Leistung interessiert Sie?</option>
+                                <option value="webdesign">Webdesign</option>
+                                <option value="marketing">Online Marketing</option>
+                                <option value="automation">KI-Automatisierung</option>
+                                <option value="digitalization">Digitalisierung</option>
+                                <option value="it">IT-Dienstleistungen</option>
+                                <option value="other">Sonstiges</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Ihre Nachricht" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>E-Mail</h4>
+                        <p><a href="mailto:kontakt@firmenplus.de">kontakt@firmenplus.de</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Telefon</h4>
+                        <p><a href="tel:+49000000000">+49 (0) 000 - 000 000</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Bürozeiten</h4>
+                        <p>Montag - Freitag<br>09:00 - 18:00 Uhr</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>Angebot</h4>
+                        <p>Kostenlose Erstberatung<br>Unverbindlich & flexibel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <div class="footer-section">
+                    <h4>FirmenPlus</h4>
+                    <p>Ihr Partner für digitales Wachstum und moderne Geschäftslösungen.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Leistungen</h4>
+                    <ul>
+                        <li><a href="#services">Webdesign</a></li>
+                        <li><a href="#services">Online Marketing</a></li>
+                        <li><a href="#services">KI-Automatisierung</a></li>
+                        <li><a href="#services">Digitalisierung</a></li>
+                        <li><a href="#services">IT-Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Unternehmen</h4>
+                    <ul>
+                        <li><a href="#about">Über uns</a></li>
+                        <li><a href="#process">Unser Prozess</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 FirmenPlus. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h2>Kostenloses Erstgespräch</h2>
+            <p>Lassen Sie uns Ihre Ziele besprechen</p>
+            <form class="contact-form" id="modal-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Ihr Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Ihre E-Mail-Adresse" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Ihre Telefonnummer">
+                </div>
+                <div class="form-group">
+                    <input type="text" placeholder="Unternehmensname">
+                </div>
+                <div class="form-group">
+                    <select required>
+                        <option value="">Welche Leistung interessiert Sie?</option>
+                        <option value="webdesign">Webdesign</option>
+                        <option value="marketing">Online Marketing</option>
+                        <option value="automation">KI-Automatisierung</option>
+                        <option value="digitalization">Digitalisierung</option>
+                        <option value="it">IT-Dienstleistungen</option>
+                        <option value="other">Sonstiges</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Anfrage senden</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
