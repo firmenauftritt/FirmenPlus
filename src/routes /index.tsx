@@ -1,22 +1,13 @@
-import { createFileRoute } from '@tanstack/react-router'
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './styles.css'
 
-export const Route = createFileRoute('/')({
-  component: Home,
-})
-
-function Home() {
-  return (
-    <main style={{ padding: '40px' }}>
-      <h1>FirmenPlus</h1>
-      <p>Webdesign, KI-Automatisierung und Digitalisierung.</p>
-
-      <h2>Unsere Leistungen</h2>
-      <ul>
-        <li>Webdesign</li>
-        <li>KI-Automatisierung</li>
-        <li>Digitalisierung</li>
-        <li>IT-Dienstleistungen</li>
-      </ul>
-    </main>
+const root = document.getElementById('root')
+if (root) {
+  ReactDOM.createRoot(root).render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
   )
 }
